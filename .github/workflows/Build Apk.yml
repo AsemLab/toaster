@@ -34,7 +34,7 @@ jobs:
         if: ${{ always() }}
         with:
           name: testDebugUnitTest Report.html
-          path: toaster/build/reports/tests/testDebugUnitTest/index.html
+          path: toaster/build/reports/tests/testDebugUnitTest/
 
 
   build_apk:
