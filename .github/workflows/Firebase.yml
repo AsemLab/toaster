@@ -19,10 +19,10 @@ jobs:
           github-token: ${{ github.token }}
           run-id: 10248960077
 
-      - name: Print artifacts files
-        run: ls -R artifacts
-      - name: Print artifacts files path
-        run: cd artifacts
+#      - name: Print artifacts files
+#        run: ls -R artifacts
+#      - name: Print artifacts files path
+#        run: cd artifacts
 
 
   deploy:
