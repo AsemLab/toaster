@@ -36,6 +36,7 @@ jobs:
           name: app-debug22.apk
           path: artifacts
           github-token: ${{ github.token }}
+          run-id: ${{ github.event.workflow_run.id }}
 
       - name: Print artifacts files
         run: ls -R artifacts
