@@ -31,12 +31,11 @@ jobs:
           distribution: 'temurin'
 
       - name: Download Artifact
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v4.1.8
         with:
           name: app-debug22.apk
           path: artifacts
           github-token: ${{ github.token }}
-          run-id: 10248960077
 
       - name: Print artifacts files
         run: ls -R artifacts
