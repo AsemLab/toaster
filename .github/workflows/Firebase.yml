@@ -63,11 +63,11 @@ jobs:
           java-version: 17
           distribution: 'temurin'
 
-      - name: Change wrapper permissions
-        run: chmod +x ./gradlew
-
-      - name: Build Gradle
-        run: ./gradlew assembleDebug
+#      - name: Change wrapper permissions
+#        run: chmod +x ./gradlew
+#
+#      - name: Build Gradle
+#        run: ./gradlew assembleDebug
 
       - name: Upload artifact to Firebase App Distribution
         uses: wzieba/Firebase-Distribution-Github-Action@v1.7.0
