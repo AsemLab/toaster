@@ -33,7 +33,7 @@ jobs:
       - name: Download Artifact
         uses: actions/download-artifact@v4.1.8
         with:
-          name: app-debug22.apk
+          name: app-debug.apk
           path: artifacts
           github-token: ${{ github.token }}
           run-id: ${{ github.event.workflow_run.id }}
@@ -49,6 +49,6 @@ jobs:
           appId: ${{secrets.FIREBASE_APP_ID}}
           serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
           #          groups: testers
-          file: artifacts/app-debug22.apk
+          file: artifacts/app-debug.apk
           debug: true
           releaseNotes: ${{ inputs.release_notes }}
