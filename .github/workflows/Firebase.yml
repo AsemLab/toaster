@@ -25,7 +25,7 @@ jobs:
       - name: Print artifacts files
         run: ls -R artifacts
       - name: Print artifacts files path
-        run: ls -d -1 $PWD/*.*
+        run: ls -d -1 $PWD/**/*
 
 #  build_apk:
 #    name: Build Apk
