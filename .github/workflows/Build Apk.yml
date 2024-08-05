@@ -1,71 +1,67 @@
-#name: Generate Debug Apk
-#
-#on:
-#  push:
-#    branches:
-#      - master
-#
-#  workflow_dispatch:
-#
-#
-#jobs:
-#
-#  run_unit_test:
-#    name: Run Unit Testing
-#    runs-on: ubuntu-latest
-#    continue-on-error: true
-#
-#    steps:
-#      - name: Checkout
-#        uses: actions/checkout@v4
-#
-#      - name: Setup Java
-#        uses: actions/setup-java@v4.2.1
-#        with:
-#          java-version: 17
-#          distribution: 'temurin'
-#
-#      - name: Change wrapper permissions
-#        run: chmod +x ./gradlew
-#
-#      - name: Run Debug Tests
-#        run: ./gradlew testDebugUnitTest
-#
-#      - name: Upload Tests report
-#        uses: actions/upload-artifact@v4.3.4
-#        if: ${{ always() }}
-#        with:
-#          name: testDebugUnitTest Report
-#          path: toaster/build/reports/tests/testDebugUnitTest/
-#
-#
-#  build_apk:
-#    name: Build Apk
-#    runs-on: ubuntu-latest
-#    continue-on-error: true
-#
-#    steps:
-#      - name: Checkout
-#        uses: actions/checkout@v4.1.7
-#
-#      - name: Setup Java
-#        uses: actions/setup-java@v4.2.1
-#        with:
-#          java-version: 17
-#          distribution: 'temurin'
-#
-#      - name: Change wrapper permissions
-#        run: chmod +x ./gradlew
-#
-#      - name: Build Gradle
-#        run: ./gradlew build
-#
-#      - name: Upload APK
-#        uses: actions/upload-artifact@v4.3.4
-#        with:
-#          name: app-debug.apk
-#          path: app/build/outputs/apk/debug/**.apk
-#
-#
-#
-#
+name: Generate Debug Apk
+
+on:
+  push:
+    branches:
+      - master
+
+  workflow_dispatch:
+
+
+jobs:
+
+  run_unit_test:
+    name: Run Unit Testing
+    runs-on: ubuntu-latest
+    continue-on-error: true
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v4.2.1
+        with:
+          java-version: 17
+          distribution: 'temurin'
+
+      - name: Change wrapper permissions
+        run: chmod +x ./gradlew
+
+      - name: Run Debug Tests
+        run: ./gradlew testDebugUnitTest
+
+      - name: Upload Tests report
+        uses: actions/upload-artifact@v4.3.4
+        if: ${{ always() }}
+        with:
+          name: testDebugUnitTest Report
+          path: toaster/build/reports/tests/testDebugUnitTest/
+
+
+  build_apk:
+    name: Build Apk
+    runs-on: ubuntu-latest
+    continue-on-error: true
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.1.7
+
+      - name: Setup Java
+        uses: actions/setup-java@v4.2.1
+        with:
+          java-version: 17
+          distribution: 'temurin'
+
+      - name: Change wrapper permissions
+        run: chmod +x ./gradlew
+
+      - name: Build Gradle
+        run: ./gradlew build
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4.3.4
+        with:
+          name: app-debug22.apk
+          path: app/build/outputs/apk/debug/**.apk
