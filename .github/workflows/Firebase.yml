@@ -25,7 +25,7 @@ jobs:
       - name: Print artifacts files
         run: ls -R artifacts
       - name: Print artifacts files path
-        run: cd artifacts
+        run: find "$(pwd)" -name .apk
 
 #  build_apk:
 #    name: Build Apk
