@@ -72,5 +72,5 @@ jobs:
           appId: ${{secrets.FIREBASE_APP_ID}}
           serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
           #          groups: testers
-          file: ${GITHUB_WORKSPACE}/app/build/outputs/apk/debug/app-debug.apk
+          file: app/build/outputs/apk/debug/app-debughg.apk
           debug: true
