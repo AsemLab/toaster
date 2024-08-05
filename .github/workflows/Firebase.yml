@@ -4,6 +4,8 @@ on:
   workflow_run:
     workflows:
       - "Generate Debug Apk"
+    types:
+      - completed
 
 jobs:
   build:
