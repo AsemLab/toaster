@@ -8,7 +8,12 @@ on:
 #      - completed
 
   workflow_dispatch:
-
+    inputs:
+      release_notes:
+        type: string
+        required: true
+        default: 'Manual Debug Build'
+        description: 'Release Notes'
 jobs:
 
   download_artifact:
@@ -69,6 +74,10 @@ jobs:
 #      - name: Build Gradle
 #        run: ./gradlew assembleDebug
 
+      - name: Print artifacts files
+        run: ls -R artifacts
+      - name: Print artifacts files path
+        run: ls -d -1 $PWD/**/*
       - name: Upload artifact to Firebase App Distribution
         uses: wzieba/Firebase-Distribution-Github-Action@v1.7.0
         with:
@@ -77,3 +86,4 @@ jobs:
           #          groups: testers
           file: artifacts/app-debug.apk
           debug: true
+          releaseNotes: ${{ inputs.release_notes }}
