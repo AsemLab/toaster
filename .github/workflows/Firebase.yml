@@ -11,16 +11,16 @@ on:
 
 jobs:
 
-  download_artifact:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Download Artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: app-debug.apk
-          path: app/build/outputs/apk/debug
-          github-token: ${{ github.token }}
-          run-id: 10248960077
+#  download_artifact:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Download Artifact
+#        uses: actions/download-artifact@v4
+#        with:
+#          name: app-debug.apk
+#          path: app/build/outputs/apk/debug
+#          github-token: ${{ github.token }}
+#          run-id: 10248960077
 
 #      - name: Print artifacts files
 #        run: ls -R artifacts
@@ -72,5 +72,5 @@ jobs:
           appId: ${{secrets.FIREBASE_APP_ID}}
           serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
           #          groups: testers
-          file: app/build/outputs/apk/debug/app-debug.apk
+          file: ${GITHUB_WORKSPACE}/app/build/outputs/apk/debug/app-debug.apk
           debug: true
