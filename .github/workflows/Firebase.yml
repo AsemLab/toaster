@@ -75,5 +75,5 @@ jobs:
           appId: ${{secrets.FIREBASE_APP_ID}}
           serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
           #          groups: testers
-          file: /home/runner/work/toaster/toaster/artifacts/app-debug.apk
+          file: artifacts/app-debug.apk
           debug: true
