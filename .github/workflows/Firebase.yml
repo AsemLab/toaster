@@ -27,32 +27,31 @@ jobs:
 #      - name: Print artifacts files path
 #        run: cd artifacts
 
-  build_apk:
-    name: Build Apk
-    runs-on: ubuntu-latest
-    continue-on-error: true
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4.1.7
-
-      - name: Setup Java
-        uses: actions/setup-java@v4.2.1
-        with:
-          java-version: 17
-          distribution: 'temurin'
-
-      - name: Change wrapper permissions
-        run: chmod +x ./gradlew
-
-      - name: Build Gradle
-        run: ./gradlew assembleDebug
+#  build_apk:
+#    name: Build Apk
+#    runs-on: ubuntu-latest
+#    continue-on-error: true
+#
+#    steps:
+#      - name: Checkout
+#        uses: actions/checkout@v4.1.7
+#
+#      - name: Setup Java
+#        uses: actions/setup-java@v4.2.1
+#        with:
+#          java-version: 17
+#          distribution: 'temurin'
+#
+#      - name: Change wrapper permissions
+#        run: chmod +x ./gradlew
+#
+#      - name: Build Gradle
+#        run: ./gradlew assembleDebug
 
 
   deploy:
 
     runs-on: ubuntu-latest
-    needs: [build_apk]
 
     steps:
       - name: Checkout
@@ -64,8 +63,12 @@ jobs:
           java-version: 17
           distribution: 'temurin'
 
-      #      - name: build release
-      #        run: ./gradlew assembleRelease
+      - name: Change wrapper permissions
+        run: chmod +x ./gradlew
+
+      - name: Build Gradle
+        run: ./gradlew assembleDebug
+
       - name: Upload artifact to Firebase App Distribution
         uses: wzieba/Firebase-Distribution-Github-Action@v1.7.0
         with:
