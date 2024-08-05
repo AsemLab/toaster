@@ -8,7 +8,22 @@ on:
       - completed
 
 jobs:
-  build:
+
+  download_artifact:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: app-debug.apk
+          path: arti
+          github-token: ${{ github_token }}
+          run-id: 10248960077
+
+      - run: ls -R my-artifact
+
+
+  deploy:
 
     runs-on: ubuntu-latest
 
@@ -22,12 +37,12 @@ jobs:
           java-version: 17
           distribution: 'temurin'
 
-#      - name: build release
-#        run: ./gradlew assembleRelease
+      #      - name: build release
+      #        run: ./gradlew assembleRelease
       - name: upload artifact to Firebase App Distribution
         uses: wzieba/Firebase-Distribution-Github-Action@v1.7.0
         with:
           appId: ${{secrets.FIREBASE_APP_ID}}
           serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
-#          groups: testers
+          #          groups: testers
           file: app/build/outputs/apk/debug/app-debug.apk
