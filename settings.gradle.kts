@@ -13,5 +13,5 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "ToasterLibrary"
-include ':app'
-include ':toaster'
+include(":app")
+include(":toaster")

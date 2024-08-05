@@ -1,4 +1,4 @@
-package com.example.toasterlibrary
+package com.asemlab.toasterlibrary
 
 import org.junit.Test
 
