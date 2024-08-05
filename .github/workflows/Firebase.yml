@@ -18,7 +18,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: app-debug.apk
-          path: app/build/outputs/apk/debug
+          path: artifacts
           github-token: ${{ github.token }}
           run-id: 10248960077
 
