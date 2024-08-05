@@ -16,11 +16,13 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: app-debug.apk
-          path: artifacts
           github-token: ${{ github.token }}
           run-id: 10248960077
 
-      - run: ls -R artifacts
+      - name: Print artifacts files
+        run: ls -R artifacts
+      - name: Print artifacts files path
+        run: cd artifacts
 
 
   deploy:
@@ -32,7 +34,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: set up JDK 17
+      - name: Set up JDK 17
         uses: actions/setup-java@v4.2.1
         with:
           java-version: 17
@@ -40,10 +42,10 @@ jobs:
 
       #      - name: build release
       #        run: ./gradlew assembleRelease
-      - name: upload artifact to Firebase App Distribution
+      - name: Upload artifact to Firebase App Distribution
         uses: wzieba/Firebase-Distribution-Github-Action@v1.7.0
         with:
           appId: ${{secrets.FIREBASE_APP_ID}}
           serviceCredentialsFileContent: ${{ secrets.CREDENTIAL_FILE_CONTENT }}
           #          groups: testers
-          file: home/runner/work/toaster/toaster/artifacts/app-debug.apk
+          file: app-debug.apk
